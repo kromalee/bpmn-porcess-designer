@@ -9,12 +9,12 @@
       </el-form-item>
       <!--流程的基础属性-->
       <template v-if="elementBaseInfo.$type === 'bpmn:Process'">
-        <el-form-item label="版本标签">
+        <!-- <el-form-item label="版本标签">
           <el-input v-model="elementBaseInfo.versionTag" clearable @change="updateBaseInfo('versionTag')" />
-        </el-form-item>
-        <el-form-item label="可执行">
+        </el-form-item> -->
+        <!-- <el-form-item label="可执行">
           <el-switch v-model="elementBaseInfo.isExecutable" active-text="是" inactive-text="否" @change="updateBaseInfo('isExecutable')" />
-        </el-form-item>
+        </el-form-item> -->
       </template>
       <el-form-item v-if="elementBaseInfo.$type === 'bpmn:SubProcess'" label="状态">
         <el-switch v-model="elementBaseInfo.isExpanded" active-text="展开" inactive-text="折叠" @change="updateBaseInfo('isExpanded')" />

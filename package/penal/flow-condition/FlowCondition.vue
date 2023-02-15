@@ -4,7 +4,7 @@
       <el-form-item label="流转类型">
         <el-select v-model="flowConditionForm.type" @change="updateFlowType">
           <el-option label="普通流转路径" value="normal" />
-          <el-option label="默认流转路径" value="default" />
+          <!-- <el-option label="默认流转路径" value="default" /> -->
           <el-option label="条件流转路径" value="condition" />
         </el-select>
       </el-form-item>

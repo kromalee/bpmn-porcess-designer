@@ -4,7 +4,8 @@
       <slot name="control-header"></slot>
       <template v-if="!$slots['control-header']">
         <el-button-group key="file-control">
-          <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-folder-opened" @click="$refs.refFile.click()">打开文件</el-button>
+          <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-folder-opened"
+            @click="$refs.refFile.click()">打开文件</el-button>
           <el-tooltip effect="light">
             <div slot="content">
               <el-button :size="headerButtonSize" type="text" @click="downloadProcessAsXml()">下载为XML文件</el-button>
@@ -15,14 +16,14 @@
             </div>
             <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-download">下载文件</el-button>
           </el-tooltip>
-          <el-tooltip effect="light">
+          <!-- <el-tooltip effect="light">
             <div slot="content">
               <el-button :size="headerButtonSize" type="text" @click="previewProcessXML">预览XML</el-button>
               <br />
               <el-button :size="headerButtonSize" type="text" @click="previewProcessJson">预览JSON</el-button>
             </div>
             <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-view">预览</el-button>
-          </el-tooltip>
+          </el-tooltip> -->
           <el-tooltip v-if="simulation" effect="light" :content="this.simulationStatus ? '退出模拟' : '开启模拟'">
             <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-cpu" @click="processSimulation">
               模拟
@@ -31,31 +32,39 @@
         </el-button-group>
         <el-button-group key="align-control">
           <el-tooltip effect="light" content="向左对齐">
-            <el-button :size="headerButtonSize" class="align align-left" icon="el-icon-s-data" @click="elementsAlign('left')" />
+            <el-button :size="headerButtonSize" class="align align-left" icon="el-icon-s-data"
+              @click="elementsAlign('left')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向右对齐">
-            <el-button :size="headerButtonSize" class="align align-right" icon="el-icon-s-data" @click="elementsAlign('right')" />
+            <el-button :size="headerButtonSize" class="align align-right" icon="el-icon-s-data"
+              @click="elementsAlign('right')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向上对齐">
-            <el-button :size="headerButtonSize" class="align align-top" icon="el-icon-s-data" @click="elementsAlign('top')" />
+            <el-button :size="headerButtonSize" class="align align-top" icon="el-icon-s-data"
+              @click="elementsAlign('top')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向下对齐">
-            <el-button :size="headerButtonSize" class="align align-bottom" icon="el-icon-s-data" @click="elementsAlign('bottom')" />
+            <el-button :size="headerButtonSize" class="align align-bottom" icon="el-icon-s-data"
+              @click="elementsAlign('bottom')" />
           </el-tooltip>
           <el-tooltip effect="light" content="水平居中">
-            <el-button :size="headerButtonSize" class="align align-center" icon="el-icon-s-data" @click="elementsAlign('center')" />
+            <el-button :size="headerButtonSize" class="align align-center" icon="el-icon-s-data"
+              @click="elementsAlign('center')" />
           </el-tooltip>
           <el-tooltip effect="light" content="垂直居中">
-            <el-button :size="headerButtonSize" class="align align-middle" icon="el-icon-s-data" @click="elementsAlign('middle')" />
+            <el-button :size="headerButtonSize" class="align align-middle" icon="el-icon-s-data"
+              @click="elementsAlign('middle')" />
           </el-tooltip>
         </el-button-group>
         <el-button-group key="scale-control">
           <el-tooltip effect="light" content="缩小视图">
-            <el-button :size="headerButtonSize" :disabled="defaultZoom < 0.2" icon="el-icon-zoom-out" @click="processZoomOut()" />
+            <el-button :size="headerButtonSize" :disabled="defaultZoom < 0.2" icon="el-icon-zoom-out"
+              @click="processZoomOut()" />
           </el-tooltip>
           <el-button :size="headerButtonSize">{{ Math.floor(this.defaultZoom * 10 * 10) + "%" }}</el-button>
           <el-tooltip effect="light" content="放大视图">
-            <el-button :size="headerButtonSize" :disabled="defaultZoom > 4" icon="el-icon-zoom-in" @click="processZoomIn()" />
+            <el-button :size="headerButtonSize" :disabled="defaultZoom > 4" icon="el-icon-zoom-in"
+              @click="processZoomIn()" />
           </el-tooltip>
           <el-tooltip effect="light" content="重置视图并居中">
             <el-button :size="headerButtonSize" icon="el-icon-c-scale-to-original" @click="processReZoom()" />
@@ -63,18 +72,21 @@
         </el-button-group>
         <el-button-group key="stack-control">
           <el-tooltip effect="light" content="撤销">
-            <el-button :size="headerButtonSize" :disabled="!revocable" icon="el-icon-refresh-left" @click="processUndo()" />
+            <el-button :size="headerButtonSize" :disabled="!revocable" icon="el-icon-refresh-left"
+              @click="processUndo()" />
           </el-tooltip>
           <el-tooltip effect="light" content="恢复">
-            <el-button :size="headerButtonSize" :disabled="!recoverable" icon="el-icon-refresh-right" @click="processRedo()" />
+            <el-button :size="headerButtonSize" :disabled="!recoverable" icon="el-icon-refresh-right"
+              @click="processRedo()" />
           </el-tooltip>
-          <el-tooltip effect="light" content="重新绘制">
+          <!-- <el-tooltip effect="light" content="重新绘制">
             <el-button :size="headerButtonSize" icon="el-icon-refresh" @click="processRestart" />
-          </el-tooltip>
+          </el-tooltip> -->
         </el-button-group>
       </template>
       <!-- 用于打开本地文件-->
-      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn" @change="importLocalFile" />
+      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn"
+        @change="importLocalFile" />
     </div>
     <div class="my-process-designer__container">
       <div class="my-process-designer__canvas" ref="bpmn-canvas"></div>
@@ -266,7 +278,7 @@ export default {
       const that = this;
       // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
       this.events.forEach(event => {
-        EventBus.on(event, function(eventObj) {
+        EventBus.on(event, function (eventObj) {
           let eventName = event.replace(/\./g, "-");
           let element = eventObj ? eventObj.element : null;
           that.$emit(eventName, element, eventObj);
@@ -365,7 +377,7 @@ export default {
       const file = this.$refs.refFile.files[0];
       const reader = new FileReader();
       reader.readAsText(file);
-      reader.onload = function() {
+      reader.onload = function () {
         let xmlStr = this.result;
         that.createNewDiagram(xmlStr);
       };
@@ -447,6 +459,7 @@ export default {
         this.previewModelVisible = true;
       });
     },
+
     previewProcessJson() {
       const newConvert = new X2JS();
       this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
@@ -460,7 +473,25 @@ export default {
         this.previewType = "json";
         this.previewModelVisible = true;
       });
-    }
-  }
+    },
+    getXMLData: function () {
+      return this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
+        return xml
+      });
+    },
+    getJSONData: function () {
+      return this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
+        const { definitions } = newConvert.xml2js(xml);
+        if (definitions) {
+          return JSON.stringify(definitions, null, 4)
+        } else {
+          return ''
+        }
+
+      });
+    },
+  },
+
+
 };
 </script>

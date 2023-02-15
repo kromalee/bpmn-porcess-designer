@@ -100,16 +100,16 @@ F.prototype.getPaletteEntries = function() {
         }
       }
     },
-    "space-tool": {
-      group: "tools",
-      className: "bpmn-icon-space-tool",
-      title: translate("Activate the create/remove space tool"),
-      action: {
-        click: function(event) {
-          spaceTool.activateSelection(event);
-        }
-      }
-    },
+    // "space-tool": {
+    //   group: "tools",
+    //   className: "bpmn-icon-space-tool",
+    //   title: translate("Activate the create/remove space tool"),
+    //   action: {
+    //     click: function(event) {
+    //       spaceTool.activateSelection(event);
+    //     }
+    //   }
+    // },
     "global-connect-tool": {
       group: "tools",
       className: "bpmn-icon-connection-multi",
@@ -125,37 +125,37 @@ F.prototype.getPaletteEntries = function() {
       separator: true
     },
     "create.start-event": createAction("bpmn:StartEvent", "event", "bpmn-icon-start-event-none", translate("Create StartEvent")),
-    "create.intermediate-event": createAction(
-      "bpmn:IntermediateThrowEvent",
-      "event",
-      "bpmn-icon-intermediate-event-none",
-      translate("Create Intermediate/Boundary Event")
-    ),
+    // "create.intermediate-event": createAction(
+    //   "bpmn:IntermediateThrowEvent",
+    //   "event",
+    //   "bpmn-icon-intermediate-event-none",
+    //   translate("Create Intermediate/Boundary Event")
+    // ),
     "create.end-event": createAction("bpmn:EndEvent", "event", "bpmn-icon-end-event-none", translate("Create EndEvent")),
     "create.exclusive-gateway": createAction("bpmn:ExclusiveGateway", "gateway", "bpmn-icon-gateway-none", translate("Create Gateway")),
     "create.user-task": createAction("bpmn:UserTask", "activity", "bpmn-icon-user-task", translate("Create User Task")),
-    "create.sql-task": createAction("user:MySql", "activity", "bpmn-icon-mysql", "MySQL 节点"),
-    "create.data-object": createAction("bpmn:DataObjectReference", "data-object", "bpmn-icon-data-object", translate("Create DataObjectReference")),
-    "create.data-store": createAction("bpmn:DataStoreReference", "data-store", "bpmn-icon-data-store", translate("Create DataStoreReference")),
-    "create.subprocess-expanded": {
-      group: "activity",
-      className: "bpmn-icon-subprocess-expanded",
-      title: translate("Create expanded SubProcess"),
-      action: {
-        dragstart: createSubprocess,
-        click: createSubprocess
-      }
-    },
-    "create.participant-expanded": {
-      group: "collaboration",
-      className: "bpmn-icon-participant",
-      title: translate("Create Pool/Participant"),
-      action: {
-        dragstart: createParticipant,
-        click: createParticipant
-      }
-    },
-    "create.group": createAction("bpmn:Group", "artifact", "bpmn-icon-group", translate("Create Group"))
+    // "create.sql-task": createAction("user:MySql", "activity", "bpmn-icon-mysql", "MySQL 节点"),
+    // "create.data-object": createAction("bpmn:DataObjectReference", "data-object", "bpmn-icon-data-object", translate("Create DataObjectReference")),
+    // "create.data-store": createAction("bpmn:DataStoreReference", "data-store", "bpmn-icon-data-store", translate("Create DataStoreReference")),
+    // "create.subprocess-expanded": {
+    //   group: "activity",
+    //   className: "bpmn-icon-subprocess-expanded",
+    //   title: translate("Create expanded SubProcess"),
+    //   action: {
+    //     dragstart: createSubprocess,
+    //     click: createSubprocess
+    //   }
+    // },
+    // "create.participant-expanded": {
+    //   group: "collaboration",
+    //   className: "bpmn-icon-participant",
+    //   title: translate("Create Pool/Participant"),
+    //   action: {
+    //     dragstart: createParticipant,
+    //     click: createParticipant
+    //   }
+    // },
+    // "create.group": createAction("bpmn:Group", "artifact", "bpmn-icon-group", translate("Create Group"))
   });
 
   return actions;
