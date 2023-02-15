@@ -9,7 +9,7 @@
     }" v-model="xmlString" v-bind="controlForm" keyboard ref="processDesigner" @element-click="elementClick"
       @element-contextmenu="elementContextmenu" @init-finished="initModeler">
     </my-process-designer>
-    <my-properties-panel :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix"
+    <MyProcessPenal :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix"
       class="process-panel" />
 
   </div>
@@ -41,7 +41,13 @@ import "bpmn-js/dist/assets/diagram-js.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
 import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
 
+import MyProcessDesigner from "../designer";
+import MyProcessPenal from "../penal";
+
 export default {
+  components:{
+    MyProcessDesigner,MyProcessPenal
+  },
   name: "MyProcessDesignerFull",
   props: {
     xmlString: {

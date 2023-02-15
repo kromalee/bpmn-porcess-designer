@@ -3,7 +3,9 @@
  * address https://github.com/igdianov/activiti-bpmn-moddle
  * */
 
+import a from "./activitiExtension"
+
 export default {
   __init__: ["ActivitiModdleExtension"],
-  ActivitiModdleExtension: ["type", require("./activitiExtension")],
+  ActivitiModdleExtension: ["type", a],
 };

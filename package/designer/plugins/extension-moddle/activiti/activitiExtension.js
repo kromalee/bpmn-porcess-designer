@@ -1,6 +1,6 @@
 "use strict";
 
-var some = require("min-dash").some;
+import {some} from "min-dash";
 
 var ALLOWED_TYPES = {
   FailedJobRetryTimeCycle: [

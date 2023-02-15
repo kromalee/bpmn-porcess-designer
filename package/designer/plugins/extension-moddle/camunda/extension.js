@@ -1,8 +1,6 @@
 "use strict";
 
-var isFunction = require("min-dash").isFunction,
-  isObject = require("min-dash").isObject,
-  some = require("min-dash").some;
+import { isFunction, isObject, some } from "min-dash";
 
 var WILDCARD = "*";
 
