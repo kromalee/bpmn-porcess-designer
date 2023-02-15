@@ -315,6 +315,7 @@ export default {
         if (warnings && warnings.length) {
           warnings.forEach(warn => console.warn(warn));
         }
+        this.processReZoom()
       } catch (e) {
         console.error(`[Process Designer Warn]: ${e?.message || e}`);
       }
@@ -480,12 +481,13 @@ export default {
       });
     },
     getJSONData: function () {
+      const newConvert = new X2JS();
       return this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
         const { definitions } = newConvert.xml2js(xml);
         if (definitions) {
-          return JSON.stringify(definitions, null, 4)
+          return JSON.parse(JSON.stringify(definitions, null, 4))
         } else {
-          return ''
+          return {}
         }
 
       });

@@ -4,9 +4,7 @@ import "./theme/index.scss"
 const components = {MyProcessDesignerFull}
 
 const install = function (Vue) {
-  components.forEach((component) => {
-    Vue.component(component.name, component);
-  });
+  Vue.component(MyProcessDesignerFull.name, MyProcessDesignerFull);
 };
 
 if (typeof window !== "undefined" && window.Vue) {
