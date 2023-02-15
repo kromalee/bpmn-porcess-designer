@@ -37,6 +37,10 @@ import minimapModule from "diagram-js-minimap";
 import clickoutside from "element-ui/lib/utils/clickoutside";
 import RewriteAutoPlace from "./modules/auto-place/rewriteAutoPlace";
 
+import "bpmn-js/dist/assets/diagram-js.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
+
 export default {
   name: "MyProcessDesignerFull",
   props: {

@@ -2,6 +2,7 @@ import MyProcessDesigner from "./designer";
 import MyProcessPalette from "./palette";
 import MyProcessPenal from "./penal";
 import MyProcessDesignerFull from "./designer-full";
+import "./theme/index.scss"
 
 const components = [
   MyProcessDesigner,
