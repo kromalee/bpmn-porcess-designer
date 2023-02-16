@@ -12,7 +12,7 @@
     <MyProcessPenal :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix"
       class="process-panel" />
 
-  </div>
+</div>
 </template>
 
 <script>
@@ -45,27 +45,20 @@ import MyProcessDesigner from "../designer";
 import MyProcessPenal from "../penal";
 
 export default {
-  components:{
-    MyProcessDesigner,MyProcessPenal
+  components: {
+    MyProcessDesigner, MyProcessPenal
   },
   name: "MyProcessDesignerFull",
   props: {
     xmlString: {
       type: String
-    },
-    processId: {
-      type: String,
-    },
-    processName: {
-      type: String,
-    },
+    }
   },
   directives: {
     clickoutside: clickoutside
   },
   data() {
     return {
-      xmlString: "",
       modeler: null,
       reloadIndex: 0,
       controlDrawerVisible: false,
@@ -100,9 +93,6 @@ export default {
     };
   },
   created() {
-    this.controlForm.processId = this.processId
-    this.controlForm.processName = this.processName
-
   },
   methods: {
     getXMLData: function () {
@@ -172,7 +162,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .my-app {
   width: 100%;
   height: 100%;
@@ -274,5 +263,4 @@ export default {
   border-radius: 4px;
   color: #fafafa;
 }
-
 </style>
