@@ -1,6 +1,4 @@
-<template>
-  <MyProcessDesignerFull></MyProcessDesignerFull>
-</template>  
+<template><MyProcessViewerFull></MyProcessViewerFull></template>  
 <script >
-
+export default {}
 </script>

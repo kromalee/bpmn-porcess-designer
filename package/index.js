@@ -1,10 +1,12 @@
 import MyProcessDesignerFull from "./designer-full";
-import "./theme/index.scss"
+import MyProcessViewerFull from "./viewer-full";
+import "./theme/index.scss";
 
-const components = {MyProcessDesignerFull}
+const components = { MyProcessDesignerFull, MyProcessViewerFull };
 
 const install = function (Vue) {
   Vue.component(MyProcessDesignerFull.name, MyProcessDesignerFull);
+  Vue.component(MyProcessViewerFull.name, MyProcessViewerFull);
 };
 
 if (typeof window !== "undefined" && window.Vue) {
@@ -12,7 +14,8 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 export default {
-  version: "0.0.1",
+  version: "1.0.0",
   install,
-  MyProcessDesignerFull:MyProcessDesignerFull
+  MyProcessDesignerFull: MyProcessDesignerFull,
+  MyProcessViewerFull: MyProcessViewerFull,
 };
