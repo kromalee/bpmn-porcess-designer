@@ -2439,7 +2439,7 @@ bpmn-js@*:
     object-refs "^0.3.0"
     tiny-svg "^3.0.0"
 
-bpmn-js@^8.8.3:
+bpmn-js@^8.10.0:
   version "8.10.0"
   resolved "https://registry.npmmirror.com/bpmn-js/-/bpmn-js-8.10.0.tgz#e8500a0610abc691b47334afbad355df34533bf7"
   integrity sha512-NozeOi01qL0ZdVq8+5hWZcikyEvgrP1yzCBqlhSufJdHFsnEMBCwn2bJJ0B/6JgX+IBwy1sk/Uw+Ds8rQ8vfrw==
