@@ -18,11 +18,11 @@ export default defineConfig((command, mode, ssrBuild) => {
       },
     };
   } else {
-    // command === 'build'
+    command === 'build'
     return {
       plugins: [vue()],
       build: {
-        outDir:'../../togest-assm-front/src/main/resources/static/plugs/bpmn-process',
+        outDir:'E:\\kromalee\\togest-assm-front-scbzb/src/main/resources/static/plugs/bpmn-process',
         target: ["es2015"],
         lib: {
         

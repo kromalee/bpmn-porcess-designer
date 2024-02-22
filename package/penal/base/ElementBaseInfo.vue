@@ -1,8 +1,12 @@
 <template>
   <div class="panel-tab__content">
     <el-form size="mini" label-width="90px" @submit.native.prevent>
+      <el-form-item label="_ID">
+        <el-input v-model="elementBaseInfo.id" :disabled="true" clearable />
+      </el-form-item>
       <el-form-item label="ID">
-        <el-input v-model="elementBaseInfo.id" :disabled="idEditDisabled" clearable @change="updateBaseInfo('id')" />
+        <el-input v-model="elementBaseInfo.nodeLabel" :disabled="idEditDisabled" clearable
+          @change="updateBaseInfo('nodeLabel')" />
       </el-form-item>
       <el-form-item label="名称">
         <el-input v-model="elementBaseInfo.name" clearable @change="updateBaseInfo('name')" />
@@ -17,7 +21,8 @@
         </el-form-item> -->
       </template>
       <el-form-item v-if="elementBaseInfo.$type === 'bpmn:SubProcess'" label="状态">
-        <el-switch v-model="elementBaseInfo.isExpanded" active-text="展开" inactive-text="折叠" @change="updateBaseInfo('isExpanded')" />
+        <el-switch v-model="elementBaseInfo.isExpanded" active-text="展开" inactive-text="折叠"
+          @change="updateBaseInfo('isExpanded')" />
       </el-form-item>
     </el-form>
   </div>
@@ -40,8 +45,8 @@ export default {
   },
   watch: {
     businessObject: {
-      immediate: false,
-      handler: function(val) {
+      immediate: true,
+      handler: function (val) {
         if (val) {
           this.$nextTick(() => this.resetBaseInfo());
         }
@@ -51,7 +56,7 @@ export default {
   methods: {
     resetBaseInfo() {
       this.bpmnElement = window?.bpmnInstances?.bpmnElement || {};
-      this.elementBaseInfo = JSON.parse(JSON.stringify(this.bpmnElement.businessObject));
+      this.elementBaseInfo = Object.assign({}, JSON.parse(JSON.stringify(this.bpmnElement.businessObject)), this.bpmnElement.businessObject.$attrs)
       if (this.elementBaseInfo && this.elementBaseInfo.$type === "bpmn:SubProcess") {
         this.$set(this.elementBaseInfo, "isExpanded", this.elementBaseInfo.di?.isExpanded);
       }
