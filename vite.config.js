@@ -22,10 +22,10 @@ export default defineConfig((command, mode, ssrBuild) => {
     return {
       plugins: [vue()],
       build: {
-        outDir:'E:\\kromalee\\togest-assm-front-scbzb/src/main/resources/static/plugs/bpmn-process',
+        outDir: 'E:\\kromalee\\togest-assm-front/src/main/resources/static/plugs/bpmn-process',
         target: ["es2015"],
         lib: {
-        
+
           entry: path.join(__dirname, "package/index.js"),
           formats: ["umd"],
           name: "BpmnProcess",

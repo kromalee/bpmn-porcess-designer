@@ -12,7 +12,7 @@
     <MyProcessPenal :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix"
       class="process-panel" />
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -43,6 +43,11 @@ import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
 
 import MyProcessDesigner from "../designer";
 import MyProcessPenal from "../penal";
+
+import DirectedGraph from 'graphology';
+import hasCycle from 'graphology-dag/has-cycle';
+import { topologicalSort } from 'graphology-dag/topological-sort'
+import { isObject, isArray, sortBy } from "lodash";
 
 export default {
   components: {
@@ -99,7 +104,58 @@ export default {
       return this.$refs['processDesigner'].getXMLData()
     },
     getJSONData: function () {
+
+
       return this.$refs['processDesigner'].getJSONData()
+        .then((data) => {
+          var srcData = data.process
+          // 拓扑排序处理
+          var nodes = (srcData.startEvent ? [srcData.startEvent] : [])
+            .concat(srcData.userTask)
+            .concat(srcData.endEvent ? [srcData.endEvent] : [])
+            .concat(srcData.exclusiveGateway && (!isArray(srcData.exclusiveGateway)) ? [srcData.exclusiveGateway] : [])
+            .concat(isArray(srcData.exclusiveGateway) ? srcData.exclusiveGateway : [])
+          var userTask = srcData.userTask
+
+          const graph = DirectedGraph.from({
+            nodes: nodes.map((obj) => {
+              return { key: obj._id }
+            }),
+            edges: srcData.sequenceFlow.map((obj) => {
+              return {
+                key: obj._id,
+                source: obj._sourceRef,
+                target: obj._targetRef,
+              }
+            })
+          });
+          var sortList = []
+          //判断有无环
+          //如果无环就正常拓扑排序
+          //如果有环放弃使用拓扑排序
+          if (hasCycle(graph)) {
+            console.error('图中存在环，无法进行拓扑排序，将使用默认的顺序!');
+
+          } else {
+            sortList = topologicalSort(graph)
+            console.log(sortList)
+            userTask = sortBy(userTask, (obj) => {
+              return sortList.indexOf(obj._id)
+            })
+          }
+
+          return {
+            process: {
+              startEvent: srcData.startEvent,
+              userTask: userTask,
+              exclusiveGateway: srcData.exclusiveGateway,
+              endEvent: srcData.endEvent,
+              sequenceFlow: srcData.sequenceFlow
+            }
+          }
+        })
+
+
     },
     initModeler(modeler) {
       setTimeout(() => {
