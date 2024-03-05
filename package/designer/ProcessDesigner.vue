@@ -315,10 +315,22 @@ export default {
         if (warnings && warnings.length) {
           warnings.forEach(warn => console.warn(warn));
         }
+        this.initElementsBusinessObject()
         this.processReZoom()
       } catch (e) {
         console.error(`[Process Designer Warn]: ${e?.message || e}`);
       }
+    },
+    // 初始化流程图节点的自定义属性businessObject.$attrs.nodeLabel默认值
+    initElementsBusinessObject: function () {
+      this.bpmnModeler.get("elementRegistry").find(element => {
+        var businessObject = element.businessObject
+        if (!businessObject.$attrs.hasOwnProperty('nodeLabel')) {
+          const attrObj = Object.create(null);
+          attrObj.nodeLabel = businessObject.id
+          this.bpmnModeler.get("modeling").updateProperties(element, attrObj);
+        }
+      })
     },
 
     // 下载流程图到本地

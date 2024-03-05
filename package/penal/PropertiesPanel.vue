@@ -169,6 +169,12 @@ export default {
       if (!activatedElement) return;
       Log.printBack(`select element changed: id: ${activatedElement.id} , type: ${activatedElement.businessObject.$type}`);
       Log.prettyInfo("businessObject", activatedElement.businessObject);
+      // 节点的自定义属性businessObject.$attrs.nodeLabel默认值
+      if (!activatedElement.businessObject.$attrs.hasOwnProperty('nodeLabel')) {
+        const attrObj = Object.create(null);
+        attrObj.nodeLabel = activatedElement.businessObject.id
+        window.bpmnInstances.modeling.updateProperties(element, attrObj);
+      }
       window.bpmnInstances.bpmnElement = activatedElement;
       this.bpmnElement = activatedElement;
       this.elementId = activatedElement.id;
